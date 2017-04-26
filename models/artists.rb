@@ -1,5 +1,6 @@
 require('pg')
 require_relative('../db/sql_runner.rb')
+require_relative('albums.rb')
 
 
 
@@ -25,6 +26,17 @@ class Artist
     result_hash = result.first()
     new_id = result_hash['id'].to_i
     @id = new_id
+  end
+
+  def Artist.all
+      sql = "SELECT * FROM artists;"
+      result = SqlRunner.run(sql)
+      return result.map { |artist| Artist.new(artist) }
+  end
+
+
+  def albums_by_artist
+    
   end
 
 
