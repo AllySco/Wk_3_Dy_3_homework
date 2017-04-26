@@ -2,6 +2,9 @@ require('pg')
 
 class Album
 
+  attr_reader :id, :artist_id
+  attr_accessor :title, :genre
+
   def initialize(params)
     @id = params['id'].to_i if ['id']
     @title = params['title']
