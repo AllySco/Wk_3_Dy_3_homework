@@ -14,7 +14,23 @@ class Album
     @artist_id = params['artist_id'].to_i
   end
 
+  def save()
+    sql = "INSERT INTO albums (
+    title,
+    genre,
+    artist_id
+    ) VALUES (
+    '#{@title}',
+    '#{@genre}',
+    #{@artist_id}
+    )
+    RETURNING *;"
 
+    result = SqlRunner.run(sql)
+    result_hash = result.first()
+    new_id = result_hash['id'].to_i
+    @id = new_id
+  end
 
 
 
