@@ -3,8 +3,8 @@ require_relative('../models/albums.rb')
 require_relative('../models/artists.rb')
 
 
-Album.delete_all()
-Artist.delete_all()
+# Album.delete_all()
+# Artist.delete_all()
 
 
 artist1 = Artist.new({
@@ -12,6 +12,9 @@ artist1 = Artist.new({
 
 artist2 = Artist.new({
   'name' => 'Queen' })
+
+artist1.save()
+artist2.save()
 
 
 
