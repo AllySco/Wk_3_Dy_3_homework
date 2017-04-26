@@ -1,4 +1,3 @@
-require('pg')
 require_relative('../db/sql_runner.rb')
 require_relative('artists.rb')
 
@@ -40,7 +39,9 @@ class Album
       return result.map { |album| Album.new(album) }
   end
 
-
+  def  artist_on_this_album
+    
+  end
 
 
 

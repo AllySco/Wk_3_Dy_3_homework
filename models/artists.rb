@@ -1,4 +1,3 @@
-require('pg')
 require_relative('../db/sql_runner.rb')
 require_relative('albums.rb')
 
@@ -35,8 +34,12 @@ class Artist
   end
 
 
-  def albums_by_artist
-    
+  def albums_by_this_artist
+    sql = "SELECT * FROM albums
+    WHERE artist_id = #{@id};"
+    album_hashes = SqlRunner.run(sql)
+    album_objects = album_hashes.map { |album_hash| Album.new(album_hash) }
+    return album_objects
   end
 
 
